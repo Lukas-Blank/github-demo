@@ -7,7 +7,8 @@ Table of Contents:
 - [Deploying to App Engine](https://github.com/Lukas-Blank/github-demo#deploying-to-app-engine)
 - [Using Cloud Build for CI/CD](https://github.com/Lukas-Blank/github-demo#using-cloud-build-for-cicd)
 ## Getting started
-This repository includes an Hello World angular application. Clone in locally or on your cloud shell to follow along this tutorial.
+This repository includes an Hello World angular application. Clone in locally or on your cloud shell to follow along this tutorial. To clone this repository type:
+<pre><code>git clone xxx</code></pre>
 ## Setting up the GCP-Console 
 Before we start to actually move our existing resources to GCP there are some pre-configurations to make inside the GCP-Console.
 First of all, a project should have been created and a billing account has to be provisioned. Inside the created project the APIs have to be enabled. To enable specific APIs go to **APIs & Services -> Dashboard**, and press the **+ Enable APIs and Services** button.
