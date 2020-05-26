@@ -1,5 +1,6 @@
 # Transforming a GitHub / Gitlab Project to GCP using Google Source Repositories, Cloud Build and App Engine
 Table of Contents:
+- [Getting started](https://github.com/Lukas-Blank/github-demo#getting-started)
 - [Setting up the GCP-Console](https://github.com/Lukas-Blank/github-demo#setting-up-the-gcp-console)
 - [Setting up Source Repositories](https://github.com/Lukas-Blank/github-demo#setting-up-source-repositories)
   - [GitHub](https://github.com/Lukas-Blank/github-demo#github)
@@ -8,7 +9,7 @@ Table of Contents:
 - [Using Cloud Build for CI/CD](https://github.com/Lukas-Blank/github-demo#using-cloud-build-for-cicd)
 ## Getting started
 This repository includes an Hello World angular application. Clone in locally or on your cloud shell to follow along this tutorial. To clone this repository type:
-<pre><code>git clone xxx</code></pre>
+<pre><code>git clone https://github.com/Lukas-Blank/github-demo.git</code></pre>
 ## Setting up the GCP-Console 
 Before we start to actually move our existing resources to GCP there are some pre-configurations to make inside the GCP-Console.
 First of all, a project should have been created and a billing account has to be provisioned. Inside the created project the APIs have to be enabled. To enable specific APIs go to **APIs & Services -> Dashboard**, and press the **+ Enable APIs and Services** button.
