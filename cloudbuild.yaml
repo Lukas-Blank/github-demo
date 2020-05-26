@@ -1,0 +1,11 @@
+steps:
+  - name: node:10.16.3
+    entrypoint: npm
+    args: ['install']
+
+  - name: node:10.16.3
+    entrypoint: npm
+    args: [run, build, --prod]
+
+  - name: gcr.io/cloud-builders/gcloud
+    args: [app, deploy, app.yaml]
