@@ -1,11 +1,11 @@
 # Transforming a GitHub / Gitlab Project to GCP using Google Source Repositories, Cloud Build and App Engine
 Table of Contents:
-- [Setting up the GCP-Console](https://github.com/Lukas-Blank/Taschenrechner/blob/master/README.md#setting-up-the-gcp-console)
-- [Setting up Source Repositories](https://github.com/Lukas-Blank/Taschenrechner/blob/master/README.md#setting-up-source-repositories)
-  - [GitHub](https://github.com/Lukas-Blank/Taschenrechner/blob/master/README.md#github)
-  - [GitLab](https://github.com/Lukas-Blank/Taschenrechner/blob/master/README.md#gitlab)
-- [Deploying to App Engine](https://github.com/Lukas-Blank/Taschenrechner/blob/master/README.md#deploying-to-app-engine)
-- [Using Cloud Build for CI/CD](https://github.com/Lukas-Blank/Taschenrechner/blob/master/README.md#using-cloud-build-for-cicd)
+- [Setting up the GCP-Console](https://github.com/Lukas-Blank/github-demo#setting-up-the-gcp-console)
+- [Setting up Source Repositories](https://github.com/Lukas-Blank/github-demo#setting-up-source-repositories)
+  - [GitHub](https://github.com/Lukas-Blank/github-demo#github)
+  - [GitLab](https://github.com/Lukas-Blank/github-demo#gitlab)
+- [Deploying to App Engine](https://github.com/Lukas-Blank/github-demo#deploying-to-app-engine)
+- [Using Cloud Build for CI/CD](https://github.com/Lukas-Blank/github-demo#using-cloud-build-for-cicd)
 ## Setting up the GCP-Console 
 Before we start to actually move our existing resources to GCP there are some pre-configurations to make inside the GCP-Console.
 First of all, a project should have been created and a billing account has to be provisioned. Inside the created project the APIs have to be enabled. To enable specific APIs go to **APIs & Services -> Dashboard**, and press the **+ Enable APIs and Services** button.
