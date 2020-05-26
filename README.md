@@ -9,7 +9,7 @@ Table of Contents:
 - [Using Cloud Build for CI/CD](https://github.com/Lukas-Blank/github-demo#using-cloud-build-for-cicd)
 ## Getting started
 This repository includes an Hello World angular application. Clone in locally or on your cloud shell to follow along this tutorial. To clone this repository type:
-<code>git clone https://github.com/Lukas-Blank/github-demo.git</code>
+<pre><code>git clone https://github.com/Lukas-Blank/github-demo.git</code></pre>
 ## Setting up the GCP-Console 
 Before we start to actually move our existing resources to GCP there are some pre-configurations to make inside the GCP-Console.
 First of all, a project should have been created and a billing account has to be provisioned. Inside the created project the APIs have to be enabled. To enable specific APIs go to **APIs & Services -> Dashboard**, and press the **+ Enable APIs and Services** button.
@@ -35,9 +35,9 @@ Your Cloud Repository should have been created with a name like: <br>
 `github_$(GitHub-Username)_$(GitHub-Project-name)`
 ### GitLab
 If you are using an existing GitLab-Project you will use the Cloud Shell to mirror the repository. Open up the Cloud Shell and make sure you are operating in the correct project. If not use this to switch the current project: <br>
-<code>gcloud config set project $Project-ID</code><br>
+<pre><code>gcloud config set project $Project-ID</code></pre>
 Next, we will create an source repository which will become the mirror to your existing GitLab-Project. Enter: <br>
-<code> gcloud source repos create $Source-Repository-Name </code><br>
+<pre><code> gcloud source repos create $Source-Repository-Name </code></pre>
 Your source repository will be created. Next, we will create static login information to enable GitLab to push to the source repository. Go to **Source Respositories** so that you see all your source repositories in the recent project. You should now see the just created repository here. Click on it. You should see something like this:
 <img src="images/setuprepo.png" width="600"/> <br>
 For **Select your preferred authentication method** select **Manually generated credentials** and then click **1. Generate and store your Git credentials**. The following popup will show up: <br><br>
@@ -45,13 +45,13 @@ For **Select your preferred authentication method** select **Manually generated 
 Select your Google account and continue on. Another popup will show up which you will pass through allowing Google Cloud Development to access your Google Account. From the following page copy the commands that should look something like this:<br><br>
 <img src="images/credcode.png" width="700"/> <br>
 Next, copy the password you just created. To print it out to the cmd type:<br>
-<code>grep 'source.developers.google.com' ~/.gitcookies | tail -1 | cut -d= -f2</code><br>
+<pre><code>grep 'source.developers.google.com' ~/.gitcookies | tail -1 | cut -d= -f2</code></pre>
 Save the username as environment variable via:<br>
-<code>CSR_USER=$(grep 'source.developers.google.com' ~/.gitcookies | tail -1 | cut -d$'\t' -f7 | cut -d= -f1)</code><br>
+<pre><code>CSR_USER=$(grep 'source.developers.google.com' ~/.gitcookies | tail -1 | cut -d$'\t' -f7 | cut -d= -f1)</code></pre>
 Save the repo-url via:<br>
-<code>CSR_REPO=$(gcloud source repos describe $Source-Repository-Name --format="value(url)")</code><br>
+<pre><code>CSR_REPO=$(gcloud source repos describe $Source-Repository-Name --format="value(url)")</code></pre>
 To print this out type:<br>
-  <code>echo $CSR_REPO | sed "s/:\/\//:\/\/${CSR_USER}@/"</code><br>
+  <pre><code>echo $CSR_REPO | sed "s/:\/\//:\/\/${CSR_USER}@/"</code></pre>
 You will need Username and password in the next steps so leave your cloud shell open for now.
 Next, move to your desired GitLab-Project to **Settings -> Repository**.  Search for **Mirroring repositories** and click **Expand**. This should look like this: <br><br>
 <img src="images/gitlabmirror.png" width="600"/> <br>
@@ -59,19 +59,19 @@ For **Git repository URL** copy the url from your cloud shell. For **Mirror dire
 <img src="images/successmirror.png" width="700"/> <br>
 Now, to finish off the mirror-setup, make a change to your repo in GitLab (For example add something to your README.md) and commit the changes in your browser. Now, because this is the first time, to see those updates in the cloud source repositories as well, you will have to go through the next steps one last time.<br>
 First, clone your repo locally via cloud shell:<br>
-<code>git clone https://source.developers.google.com/p/$your-Project-ID/r/$your-source-repository-name</code><br>
+<pre><code>git clone https://source.developers.google.com/p/$your-Project-ID/r/$your-source-repository-name</code></pre>
 Then move to into the repo:<br>
-<code>cd $your-source-repository-name</code><br>
+<pre><code>cd $your-source-repository-name</code></pre>
 Finally execute a push:<br>
-<code>git push -u origin master</code><br>
+<pre><code>git push -u origin master</code></pre>
 Now, if you go to your source repository again and refresh your browser your GitLab-Repository should be shown. If you got any errors or want to check the steps any further see this documentation: https://cloud.google.com/solutions/mirroring-gitlab-repositories-to-cloud-source-repositories.
 ## Deploying to App Engine
 If you have not done so already, clone the repository to your cloud shell:<br>
-<code>git clone https://source.developers.google.com/p/$your-Project-ID/r/$your-source-repository-name</code><br>
+<pre><code>git clone https://source.developers.google.com/p/$your-Project-ID/r/$your-source-repository-name</code></pre>
 For this example a simple Hello-World-Angular-Project is going to be deployed. We move into out just cloned repository and install all the missing dependencies there: <br>
-<code> npm install</code><br>
+<pre><code> npm install</code></pre>
 Next, we build a production-version of our angular app: <br>
-<code>npm run build --prod</code><br>
+<pre><code>npm run build --prod</code></pre>
 This created a “dist” folder which we will be using. <br>
 Next, create a configuration file for the app engine to specify how the deployment should look. <br>
 app.yaml:
@@ -98,7 +98,7 @@ skip_files:
   - ^LICENSE
   ```
   Now, lets deploy our app for the first time:<br>
-  <code> gcloud app deploy app.yaml </code><br>
+  <pre><code> gcloud app deploy app.yaml </code></pre>
   If you are asked which region you want to deploy your app to select the desired one. You should see something like this: <br>
   <img src="images/acceptdeploy.PNG" width="700"/> <br>
   Press Y to continue. After this has finished you should be able to see your deployed website. <br>
@@ -124,13 +124,13 @@ After creating this cloudbuild.yaml we will create a trigger, which will detect 
   <img src="images/trigger.PNG" width="500"/> <br>
 Finally, press **Create**. <br>
 As the trigger is created we can continue and push our changes we made to our repository. This should already trigger the just created trigger. Make sure you are in your git root folder and type: <br>
-<code>git add -A</code><br>
+<pre><code>git add -A</code></pre>
 Then commit your changes: <br>
-<code>git commit -m "commit message" </code><br>
+<pre><code>git commit -m "commit message" </code></pre>
 Finally, push your changes. If you have worked via GitHub, you have to push to the real GitHub repository, because the Source Repository 
 is only a mirror. Then type: <br>
-<code>git push https://github.com/$Username/$REPO_Name</code><br>
+<pre><code>git push https://github.com/$Username/$REPO_Name</code></pre>
 If you were working on gitlab you can just push by using the previously used command:<br>
-<code>git push -u origin master</code><br>
+<pre><code>git push -u origin master</code></pre>
 To check if everything deployed correctly go to **Cloud Build -> History** and click the one which has your repo as **Source**. If everything went well this should look like this: <br>
   <img src="images/history.PNG" width="600"/> <br>
