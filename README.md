@@ -124,7 +124,7 @@ As the trigger is created we can continue and push our changes we made to our re
 Then commit your changes: <br>
 <pre><code>git commit -m "commit message" </code></pre>
 Finally, push your changes. If you have worked via GitHub, you have to push to the real GitHub repository, because the Source Repository 
-is only a mirror. Then type: <br>
+is only a one-way mirror. Then type: <br>
 <pre><code>git push https://github.com/$Username/$REPO_Name</code></pre>
 If you were working on gitlab you can just push by using the previously used command:<br>
 <pre><code>git push -u origin master</code></pre>
